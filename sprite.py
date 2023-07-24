@@ -31,7 +31,7 @@ class Title(pygame.sprite.Sprite):
             self.image.blit(image_scaled, (0, 0))
         else:
             self.font = pygame.font.Font("blomberg-font/Blomberg-8MKKZ.otf", 35)
-            font_surface = self.font.render(str(self.text), True, TEXT_COLOR)
+            font_surface = self.font.render(str(self.text), True, STRONG_GREEN)
             self.image.fill(CELL_COLOR)
             self.font_size = self.font.size(str(self.text))
             draw_x = (TITLESIZE / 2) - self.font_size[0] / 2

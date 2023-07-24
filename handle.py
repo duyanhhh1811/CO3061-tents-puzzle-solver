@@ -27,10 +27,6 @@ def get_input():
 
 def get_matrix_path(state: State):
     matrix_path_list = []
-    print("From handle.py\n")
-    for i in state.matrix:
-        print(i)
-    print('\n')
     while state.prev:
         matrix_path_list.insert(0, getSubMatrix(state, state.prev))
         # matrix_path_list.insert(0, state.matrix)
@@ -60,5 +56,3 @@ def main(size: int, matrix: list, row: list, col: list):
         
     point_path = get_point_path(size, get_matrix_path(goal_state))
     return point_path
-    
-    # 6-1: A* [5,4] -> [0,3] -> [1,5] -> [2,1] -> [3,4] -> [4,0] -> [4,2]

@@ -53,11 +53,12 @@ class Game:
     def update_grid(self, path, index, flag):
         if index >= len(path):
             self.idx = -1
-            self.text_list.append(UIElement(770, 550, "Execute Time: " + str(round(self.exe_time,4))))
+            self.text_list.append(UIElement(770, 550, "Execute Time: " + str(round(self.exe_time,4)) + " s"))
             self.text_list.append(UIElement(738, 600, "Total Generated States: " + str(self.total_states)))
-            self.text_list.append(UIElement(700, 650, "Click this Quit below Button to exit"))
-            quit_button = Button(675, 700, 175, 50, "Quit", F3D0D4, F2A7AC)
-            cont_button = Button(875, 700, 175, 50, "Continue", F3D0D4, F2A7AC)
+            self.text_list.append(UIElement(716, 650, "Total Allocated Memory: " + str(self.total_mem) + " KiB"))
+            self.text_list.append(UIElement(700, 700, "Click this Quit below Button to exit"))
+            quit_button = Button(675, 750, 175, 50, "Quit", F3D0D4, F2A7AC)
+            cont_button = Button(875, 750, 175, 50, "Continue", F3D0D4, F2A7AC)
             self.buttons_list.append(cont_button)
             self.buttons_list.append(quit_button)
             self.avoid_prev_state = True
@@ -150,7 +151,7 @@ class Game:
                             
                         elif button.text == "BFS":
                             s = Search(State(GAMESIZE, self.title_grid, self.row, self.col))
-                            goal_state, self.exe_time, self.total_states = s.BFS()
+                            goal_state, self.exe_time, self.total_states, self.total_mem = s.BFS()
                             self.point_path = get_point_path(GAMESIZE, get_matrix_path(goal_state))
                             #print(f"BFS path: {self.point_path}")
                             next_state_button = Button(900, 450, 175, 50, "Next State", F3D0D4, F2A7AC)
@@ -160,7 +161,7 @@ class Game:
                             self.title_grid = self.handle_matrix(self.title_grid, self.row, self.col)
                         elif button.text == "A*":
                             s = Search(State(GAMESIZE, self.title_grid, self.row, self.col))
-                            goal_state, self.exe_time, self.total_states = s.A_Star()
+                            goal_state, self.exe_time, self.total_states, self.total_mem = s.A_Star()
                             self.point_path = get_point_path(GAMESIZE, get_matrix_path(goal_state))
                             #print(f"A* Path: {self.point_path}")
                             next_state_button = Button(900, 450, 175, 50, "Next State", F3D0D4, F2A7AC)

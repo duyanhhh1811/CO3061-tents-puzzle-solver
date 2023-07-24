@@ -155,11 +155,11 @@ def cost_function(state: State):
                 continue
             else:
                 if remainClue > remainCanPutTent:
-                    value +=10
+                    value += 100
                 else:
                     value += (remainCanPutTent - remainClue)*0.2
                     if remainClue == remainCanPutTent:
-                        value+=3*remainClue
+                        value += remainClue
     for j in range(state.size): 
         if state.col[j] == 0: 
             continue
@@ -171,7 +171,7 @@ def cost_function(state: State):
                 continue
             else:
                 if remainClue > remainCanPutTent:
-                    value +=10
+                    value += 100
                 # elif remainClue == remainCanPutTent:
                 #     value += 3*remainClue
     return value + failed_tree_canNotPitch*5 # cost is prior to level that finish the clue of each row and col

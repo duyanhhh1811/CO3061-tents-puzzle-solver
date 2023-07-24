@@ -25,7 +25,9 @@ F2A7AC = (242, 167, 172)
 F2A1C1 = (242, 161, 193)
 F291A3 = (242, 145, 163)
 
-GAMESIZE = int(input("CHOOSE SIZE: "))
+STRONG_GREEN = (34, 121, 72)
+
+GAMESIZE = int(input("CHOOSE SIZE (6 or 8): "))
 if GAMESIZE == 6:
     TITLESIZE = 90
 else: 
